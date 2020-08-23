@@ -18,7 +18,7 @@ public class Main {
 
 
         File ResultFile = new File(System.getProperty("user.dir"));
-        File genomicFile= new File("src\\Homo Sapiens_KEGG_Pathways_09.04.2015.txt");
+        File genomicFile= new File("Data\\Homo Sapiens_KEGG_Pathways_09.04.2015.txt");
         //File genomicFile= new File("src\\deneme.txt");
         File pathwayRelations = new File("Results\\Pathways Relations.txt");
 

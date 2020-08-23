@@ -39,7 +39,7 @@ import java.util.ArrayList;
     static String currentTime;
     static Path resolvedPath;
     static File wholeInformationFile = new File("Results\\Whole Information.txt");
-    static File importantPathways = new File("D:\\Projects\\Java Projects\\PathwayClusteringTool\\src\\25Pathways.txt");
+    static File importantPathways = new File("D:\\Projects\\Java Projects\\ClusteringTool\\pathwayClusteringTool\\Data\\25Pathways.txt");
 
     //Standart Output Files
     static File outputPathwayFile = new File("Results\\Relationships Between Pathways.txt");
