@@ -1,0 +1,3 @@
+Ontology_KEGG_09.04.2015	Level	Category	AllAssociatedGeneIDs
+KEGG:00010	-1	Glycolysis / Gluconeogenesis	a|b|e
+KEGG:00071	-1	Fatty acid degradation	a|b|d|e
