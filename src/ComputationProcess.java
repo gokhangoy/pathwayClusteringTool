@@ -94,7 +94,8 @@ import java.util.ArrayList;
     public void computeTheTermTermMatrix(ArrayList firstGeneGroup, ArrayList secondGeneGroup,int allSingleGenes, int firstIndex,int secondIndex) {
         int oneOneCounter = 0, oneZeroCounter = 0, zeroOneCounter = 0, zeroZeroCounter = 0;
 
-                                        /// for (int i = 0; i < termSize; i++) {
+
+
         for (int j = 0; j < allSingleGenes; j++)
             {
                 if (Integer.parseInt((String) firstGeneGroup.get(j))== 1 && Integer.parseInt((String) secondGeneGroup.get(j)) == 1) {
