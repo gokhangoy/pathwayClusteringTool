@@ -6,36 +6,23 @@ public class Main {
 
 
     static String[][] geneTermMatrix;
+    static int numberOfUniqueGenes=0;
 
     public static void main(String[] args) throws IOException {
 
 
+
         File ResultFile = new File(System.getProperty("user.dir"));
         File genomicFile= new File("Data\\Homo Sapiens_KEGG_Pathways_09.04.2015.txt");
-        //File genomicFile= new File("src\\deneme.txt");
         File pathwayRelations = new File("Results\\Pathways Relations.txt");
 
         new File(ResultFile+"\\Results").mkdir();    //Kullanıcının projesinin olduğu dizine direk Results adında bir klasör ouşturuluyor ve sonuçlar oraya yazılıyor...
 
         ReadElements readElement = new ReadElements(genomicFile);
 
-        //Eğer seçmek istersem bu kodu kullanabilirim...
-
-       /* JFrame frame = new JFrame();
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-        int result = fileChooser.showOpenDialog(frame);
-
-        if(result == JFileChooser.APPROVE_OPTION)
-        {
-            genomicFile = fileChooser.getSelectedFile();
-            JOptionPane.showMessageDialog(frame,"File Selection is successful.");
-        }*/
-
-
-
         GenesClass geneOperation = new GenesClass();
         geneOperation = geneOperation.GeneOperations(readElement);
+
 
         ComputationProcess initializeTheArray = new ComputationProcess();
         initializeTheArray.InitializeTheArray(geneOperation.getWholeGenesInOnePathway().size());
@@ -63,26 +50,21 @@ public class Main {
                     getGeneAndRepoInfo().get(i)));
 
         }
-        
-        //System.out.println(sizeOfGenes);                     //////
 
 
+
+        numberOfUniqueGenes = GenesClass.getNumberOfUniqueGenes();
         //term-gene matrix'te term kısmı allGeneIDList dizisi, gene kısmı ise genes[] dizisi;
-        geneTermMatrix = new String[geneOperation.getWholeGenesInOnePathway().size()][GenesClass.getNumberOfUniqueGenes()];
+        geneTermMatrix = new String[geneOperation.getWholeGenesInOnePathway().size()][numberOfUniqueGenes];
         //geneTermMatrix = new String[allPathways.length][k];
 
 //Burayı computation process classı ile yap...
         for (int i = 0; i < geneOperation.getWholeGenesInOnePathway().size(); i++)
         //for (int i = 0; i < allPathways.length; i++)
         {
-            for (int j = 0; j < GenesClass.numberOfUniqueGenes; j++)
+            for (int j = 0; j < numberOfUniqueGenes; j++)
                 geneTermMatrix[i][j] = String.valueOf(0);       //Bütün diziyi 0 olarak initialize ediyorum burada...
         }
-
-
-      //  System.out.printf("%s" , allGenes.get(1));
-       // System.out.println();                                 ----> For Printing
-       // System.out.printf("%s" , genes.length);
 
 
         for (int i = 0, j = 1; j < geneOperation.getWholeGenesInOnePathway().size(); i++, j++)                //Ayrı ayrı pathway olan allGenes.get(j) bütün genlerle karşılşatırmak için parametre olarak veriliyor.
@@ -92,9 +74,9 @@ public class Main {
 
         System.out.println(GenesClass.getAllGenesInFile().get(0));
         System.out.println(geneOperation.getAllPathways().length);
-        System.out.println(GenesClass.getNumberOfUniqueGenes());
+        System.out.println(numberOfUniqueGenes);
         ComputationProcess newComputation = new ComputationProcess();
-        newComputation.generateTheTermTermMatrix(pathwayRelations, geneOperation.getAllPathways(), geneOperation.getAllGeneIDList(), geneTermMatrix, geneOperation.getAllPathways().length, GenesClass.getNumberOfUniqueGenes());
+        newComputation.generateTheTermTermMatrix(pathwayRelations, geneOperation.getAllPathways(), geneOperation.getAllGeneIDList(), geneTermMatrix, geneOperation.getAllPathways().length, numberOfUniqueGenes);
 
     }
 
@@ -106,8 +88,7 @@ public class Main {
 
         for (int i = 0; i < geneComparison.length; i++)
         {
-            for (int j = 0; j < GenesClass.numberOfUniqueGenes; j++)
-                //if (Objects.equals(geneComparison[i], genes[j]))
+            for (int j = 0; j < numberOfUniqueGenes; j++)
                 if (Objects.equals(geneComparison[i], GenesClass.getAllGenesInFile().get(j)))
                 {
                     geneTermMatrix[index][j] = String.valueOf(1);

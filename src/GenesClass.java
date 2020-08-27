@@ -48,11 +48,10 @@ public class GenesClass {
 
     }
 
-    public static void AddToHash(String[] seperateGenesOfOnePathway)
+    public void AddToHash(String[] seperateGenesOfOnePathway)
     {
 
-        boolean flag = false;  //Eger flag true ise genes[] dizisine de ekliyoruz. term-gene matrisini oluşturabilmek için...
-        int counter = 0;
+        boolean flag;  //Eger flag true ise genes[] dizisine de ekliyoruz. term-gene matrisini oluşturabilmek için...
 
 
         for (int i = 0; i < seperateGenesOfOnePathway.length; i++)
@@ -60,7 +59,7 @@ public class GenesClass {
 
             flag = allUniqueGenes.add(seperateGenesOfOnePathway[i]);
             //Eğer hash'e eklenebiliyorsa bu elemanı gene term matrisinin hesaplanabilmesi için ayrı bir diziye almam gerek,yor karşılaştırma yapmak için
-            if (flag == true)
+            if (flag)
             {
                 //genes[k] = seperateGenesOfOnePathway[i];
                 allGenesInFile.add(seperateGenesOfOnePathway[i]);
