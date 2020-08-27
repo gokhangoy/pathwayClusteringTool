@@ -24,7 +24,7 @@ public class Main {
 
         new File(ResultFile+"\\Results").mkdir();    //Kullanıcının projesinin olduğu dizine direk Results adında bir klasör ouşturuluyor ve sonuçlar oraya yazılıyor...
 
-        String[] allPathways;
+       String[] allPathways;
         String[] allGeneIDList;
 
         //Eğer seçmek istersem bu kodu kullanabilirim...
@@ -46,8 +46,8 @@ public class Main {
         ArrayList<String> allGenes = new ArrayList<>();
         ArrayList<String> allGenesIDs = new ArrayList<>();
         ArrayList<String> allPathwaysList = new ArrayList<>();
-        String gene;
-        String geneID;
+
+
 
         ReadElements readElement = new ReadElements(genomicFile);
 
@@ -82,6 +82,7 @@ public class Main {
         {
 
                 allPathways[i] = allPathwaysList.get(i + 1);
+
 
         }
 
